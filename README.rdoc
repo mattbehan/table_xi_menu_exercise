@@ -23,6 +23,26 @@ Things you may want to cover:
 
 * ...
 
+Basics
+
+This app presents a solution for a client looking to upload a menu and receive back a list of combinations that add up exactly to a target price specified as a header in the file.
+
+Since this is a solution aimed at a client, a login is required in order to proceed on the basis that the client is paying for the solution.
+To skip the registration process, use the email "admin@gmail.com" and the password "password"
+
+
+After the header line, data is expected in the format
+:name_of_dish, :price of dish
+e.g.
+$15.05
+mixed fruit,$2.15
+french fries,$2.75
+side salad,$3.35
+hot wings,$3.55
+mozzarella sticks,$4.20
+sampler plate,$5.80
+
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
