@@ -75,6 +75,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    materialize-sass (0.97.4)
+      sass (~> 3.3)
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -158,6 +160,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  materialize-sass
   rails (= 4.2.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

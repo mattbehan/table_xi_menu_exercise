@@ -13,3 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+//= require materialize-sprockets
+//= require materialize/extras/nouislider
+//= materialize_select.js
