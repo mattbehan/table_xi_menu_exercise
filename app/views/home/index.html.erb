@@ -1,0 +1,36 @@
+<h4>How to upload a menu file:</h4>
+
+
+<p>
+  - Create the comma separated value (csv) file
+</p>
+<p>
+  - Save it to your computer
+</p>
+<p>
+  - The upload form is below. Click "Choose File" and select the file you created.
+</p>
+<p>
+  - Once selected, click "Upload File".
+</p>
+<p>
+  - You will be notified if the upload was successful or not.
+</p>
+<p>
+  - Process complete!
+</p>
+
+
+<h4>Here is what your file would look like:</h4>
+
+
+<br><br>
+
+<h4>
+  Here is the form:
+</h4>
+
+<%= form_tag 'home/upload', id: "upload", :multipart => true do %>
+   <label for="file">Upload CSV File</label> <%= file_field_tag "file" %>
+   <%= submit_tag "Upload File", id: "save" %>
+<% end %>
