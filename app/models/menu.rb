@@ -1,10 +1,20 @@
 class Menu
+	include ActiveModel::Model
 
-	def initialize target_price, menu_items
-		@target_price = target_price
-		@menu_items = menu_items
+	def initialize file
+		menu_data = parse_file(file)
+		@target_price = menu_data.shift
+		@menu_data = menu_data
 		@combinations = []
-		@menu_item_hash = 
+		@menu_item_hash = Hash[*@menu_data.flatten]
+	end
+
+	def parse_file file
+		menu_data = []
+		CSV.foreach(file.path) do |row|
+          	menu_data << Menu.parse_row(row)
+        end
+        menu_data
 	end
 
 	def self.parse_row row

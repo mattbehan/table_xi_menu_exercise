@@ -23,7 +23,12 @@ Things you may want to cover:
 
 * ...
 
-Basics
+Usage
+First and foremost, some idiosyncracies about this program:
+If you would like to skip the registration process, use the email "admin@gmail.com" and the password "password"
+Additionally, currently in materialize the styling for buttons is kind of "overlaid" upon current buttons, so buttons can sometimes seem to not work. Make sure to click the text portion of the button, and they always work.
+
+Introduction
 
 This app presents a solution for a client looking to upload a menu and receive back a list of combinations that add up exactly to a target price specified as a header in the file.
 
@@ -41,9 +46,6 @@ side salad,$3.35
 hot wings,$3.55
 mozzarella sticks,$4.20
 sampler plate,$5.80
-
-The buttons in the materialize styling used can be sensitive to where they are being clicked. If they are not clicked in the text portion, they do not respond.
-
 
 
 Please feel free to use a different markup language if you do not plan to run
