@@ -1,4 +1,4 @@
-class Menu < ActiveRecord::Base
+class Menu
 
 	def self.parse_row row
 		if row[1]
