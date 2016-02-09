@@ -10,23 +10,20 @@ class HomeController < ApplicationController
     def upload
 
       if request.xhr?
-        begin
-          menu_items = []
-          CSV.foreach(params[:file]) do |row|
-         	menu_items << Menu.parse(row)
+        begin # response to ajax call
+          @menu_items = []
+          CSV.foreach(params[:file].path) do |row|
+          	@menu_items << Menu.parse_row(row)
           end
-          target_price = menu.shift
-          @menu = Menu.new(target_price: target_price, menu_items: menu_items)
-          # response to ajax call
-          render inline: "File uploaded!"
-        rescue Exception => e
+          @target_price = @menu_items.shift
+          @combinations = nil
+          render :"/home/_menu_viewer", layout: false, locals: { menu_items: @menu_items, combinations: @combinations }
+        rescue Exception => e #if error occurs during upload
           @error = e
-          # response to ajax call
-          render inline: "The upload failed.\n\nPlease contact admin.\n\nError details: <%= @error %>"
+          render inline: "The upload failed.\n\nError details: <%= @error %>"
         end # end of error handling
       else
-        render nothing: true
-
+        render nothing: true #render nothing if it is not a JS request, as this requires JS
       end # end of xhr
     end # end of method
 end

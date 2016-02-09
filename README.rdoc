@@ -42,6 +42,8 @@ hot wings,$3.55
 mozzarella sticks,$4.20
 sampler plate,$5.80
 
+The buttons in the materialize styling used can be sensitive to where they are being clicked. If they are not clicked in the text portion, they do not respond.
+
 
 
 Please feel free to use a different markup language if you do not plan to run
