@@ -76,7 +76,15 @@ class MenuCombinationsSolver
 		total
 	end
 
-	# Pseudocode for attempt
+	# Pseudocode for attempt to go bottom up
+	# Solve for smaller values of amount, starting with smallest amount of thing
+	# Sort list by price
+	# instantiate hash_of_possibilities
+	# Starting with smallest amount, up to largest amount
+	# for current_amount, other_coins
+	# create array of each combination of current_amount and other_coins
+	# add that array as the key of hash_of_possibilities, and the value of the combination as the value of hash_of_possibilities
+	# hash_of_possibilites.select {|key,value| value == target_amount}
 
 
 
