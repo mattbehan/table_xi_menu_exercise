@@ -47,6 +47,7 @@ class MenuCombinationsSolver
 		current_iteration.join(", ")
 	end
 
+	# to improve could substitute string values for integers in the menu hash, then in a separate method convert the combinations from the array of integers back into an array of strings
 	# method written to avoid variable usage and avoid stack overflow
 	def calculate_combinations_recursively current_iteration
 		menu_items.each do |item|
@@ -85,6 +86,30 @@ class MenuCombinationsSolver
 	# create array of each combination of current_amount and other_coins
 	# add that array as the key of hash_of_possibilities, and the value of the combination as the value of hash_of_possibilities
 	# hash_of_possibilites.select {|key,value| value == target_amount}
+
+
+	def bottom_up target_price, menu_hash
+		# start by sorting the menu hash and initialzing an empty hash that will be used to store combinations of dishes that are less than or equal to the target price
+		sorted_hash = menu_hash.sort_by {|item, price| price}
+		hash_of_possibilities = {}
+		# go through each one of the items in the menu in ascending order by value
+		sorted_hash.each do |current_item, current_items_price|
+				# The current item by itself is surely not been added as possibility yet, so we start by adding that
+				if current_items_price <= target_price
+					hash_of_possibilities[[current_item]] = current_items_price
+				end
+				# Since we are going through the list of items in ascending order, the only new combinations we can make are using the current_item in conjunction with previously used items. By dynamically adding values to the hash_of_possibilities using new combinations, we ensure that we add every possible combination that is less than the target price
+				hash_of_possibilities.each do |key,value|
+					if value + current_items_price <= target_price
+						new_possibilitiy = key.push(current_item)
+						hash_of_possibilities[new_possibilitiy] = value + current_items_price
+					end
+				end
+			# hash_of_current_options[item] = price #moved to end so that the option we are currently on is excluded from ones we have already used
+		end
+		hash_of_possibilities.select{|key,value| value == target_price}
+
+	end
 
 
 

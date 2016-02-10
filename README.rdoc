@@ -47,6 +47,12 @@ hot wings,$3.55
 mozzarella sticks,$4.20
 sampler plate,$5.80
 
+The program will allow dollar signs and decimal places to be missing from amounts and any type of character in the first portion of the row of the CSV, however the program will return an error if:
+-The first line contains a comma
+-Any line in between the first line of data in the last is left blank
+-Any line has additional commas
+-There are duplicate menu items
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

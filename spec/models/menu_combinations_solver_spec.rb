@@ -42,9 +42,16 @@ describe MenuCombinationsSolver do
 			end
 		end
 	end
-	describe "#brute_force" do
-	end
 	describe "#current_iterations_price" do
+	end
+	describe "#bottom_up" do
+		context "for example.txt" do
+			it "finds some solutions" do
+				p menu
+				results = menu_solver.bottom_up(menu.target_price, menu.menu_item_hash)
+				p results
+			end
+		end
 	end
 
 end
