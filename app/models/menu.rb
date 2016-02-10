@@ -20,16 +20,6 @@ class Menu
 		end
 	end
 
-	# def parse_file file
-	# 	menu_data = []
-	# 	CSV.foreach(file.path) do |row|
-	# 		if valid_row_lengths?(row.length) && valid_row_data?
-	#           	menu_data << parse_row(row)
-	#         end
- #        end
- #        menu_data
-	# end
-
 	# run through the file and read the data while ensuring consistency of the data
 	# if the input is not as expected, errors will be added to the menu object however it will try 
 	# returns the menu items and corresponding prices as a nested array, as well as the target price
@@ -104,36 +94,5 @@ class Menu
 		else
 			calculate_remaining_combinations(menu_items, target_price, [])
 		end
-	end
-
-	# a standalone brute-force approach
-	def brute_force menu_items, target_price
-			menu_items.each do |item|
-				current_price = item
-				current_iteration = [item]
-				while target_price >= current_price do
-				end
-			end
-	end
-
-	def calculate_remaining_combinations items_left, amount_left, current_iteration
-		if amount_left == 0
-			@combinations << current_iteration 
-			return
-		end
-		return if amount_left < 0
-		return if items_left
-		puts "checking for possible combo with #{items_left} and #{amount_left}"
-		items_left.each do |item|
-			current_iteration << item
-			amount_left = current_iterations_price(current_iteration)
-			amount_left
-			calculate_remaining_combinations(items_left)
-		end
-	end
-
-	# helper method to return the price given a set a of items
-	def current_iterations_price current_iteration
-		current_iteration.reduce {}
 	end
 end
