@@ -14,15 +14,23 @@ describe MenuCombinationsSolver do
 		end
 	end
 
-	describe "#calculate_combinations" do
+	describe "#calculate_combinations_recursively" do
 		context "for example.txt" do
 			it "finds a couple solutions" do
-				menu_solver.calculate_remaining_combinations([])
+				menu_solver.calculate_combinations_recursively([])
 				p menu_solver.combinations
 			end
 		end
-	end
-	describe "#calculate_remaining_combinations" do
+		context "for simple_example.txt" do
+			let(:menu_2) {Menu.new(File.new("/Users/mattbehan/Documents/github_stuff/table_xi_menu_exercise/simple_example_1.txt"))}
+			let(:menu_solver_2) {MenuCombinationsSolver.new(menu_2)}
+			it "finds a couple solutions" do
+				menu_solver_2.calculate_combinations_recursively([])
+				p "second solution"
+				p menu_solver_2.combinations
+				p menu_solver_2.combinations.length
+			end
+		end
 	end
 	describe "#brute_force" do
 	end

@@ -47,34 +47,24 @@ class MenuCombinationsSolver
 		current_iteration.join(", ")
 	end
 
-	# recursively, you can determine you are finished. the point is when you have started with eaach item, and as long as it is not in the current solution, you're good, but if it is you return and another recursive call is thus not made, and the branch will die
-	def calculate_remaining_combinations current_iteration
-		# if current_iteration == [] then puts "current iteration #{current_iteration}" end
+	# method written to avoid variable usage and avoid stack overflow
+	def calculate_combinations_recursively current_iteration
 		menu_items.each do |item|
 			next if @solutions_that_dont_work[convert_iteration_to_key_string(current_iteration + [item])]
 			current_iteration << item
 			if target_price - current_iterations_price(current_iteration) == 0
 				@combinations << current_iteration.sort
-				# puts "DING DING DING: #{current_iteration}"
 				current_iteration.delete(item)
 				next
 			elsif target_price - current_iterations_price(current_iteration) < 0
-				# puts "current iteration #{current_iteration}"
 				@solutions_that_dont_work[convert_iteration_to_key_string(current_iteration)] = "nope"
-				# puts "overshot it with iteration: #{current_iteration}"
 				current_iteration.delete(item)
 				next
-			else
 
 			end
-		
-			# break if target_price - current_iterations_price(current_iteration) <= 0
-			puts "adding #{item} to current_iteration: #{current_iteration}. price before add: #{current_iterations_price(current_iteration)}"
-			
-			
-			# puts "checking for possible combo with #{current_iteration} and amount left:#{amount_left} current price: #{current_iterations_price(current_iteration).to_s}"
-			calculate_remaining_combinations(current_iteration)
+			calculate_combinations_recursively(current_iteration)
 		end
+		@combinations.uniq!
 	end
 
 	# helper method to return the price given a set a of items

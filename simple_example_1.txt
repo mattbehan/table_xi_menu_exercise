@@ -1,0 +1,5 @@
+$5
+mixed fruit,$1.00
+french fries,$2.00
+side salad,$3
+tomato,$3
