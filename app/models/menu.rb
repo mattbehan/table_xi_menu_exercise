@@ -4,7 +4,7 @@ class Menu
 
 	# The main responsiblity of this class is to parse and validify the data from the input file. Most of the validations are run during the processing of the file in order to save having to run over the data again
 
-	attr_reader :target_price, :menu_data, :combinations, :menu_item_hash
+	attr_reader :target_price, :menu_data, :menu_item_hash
 
 	validates :menu_data, presence: true
 	validates :target_price, presence: true
@@ -15,7 +15,6 @@ class Menu
 		if self.errors.messages.empty?
 			@menu_data = parsed_data[0]
 			@target_price = parsed_data[1]
-			@combinations = []
 			@menu_item_hash = Hash[*@menu_data.flatten] #assumes only a 2 level deep array
 		end
 	end
@@ -88,11 +87,4 @@ class Menu
 		BigDecimal.new(data.gsub(/(\$)(\w+)/, '\2'))
 	end
 
-	def calculate_combinations menu_items, target_price
-		if menu_items==[]
-			return nil
-		else
-			calculate_remaining_combinations(menu_items, target_price, [])
-		end
-	end
 end
