@@ -76,4 +76,8 @@ class MenuCombinationsSolver
 		total
 	end
 
+	# Pseudocode for attempt
+
+
+
 end

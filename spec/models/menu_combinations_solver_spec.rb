@@ -31,6 +31,16 @@ describe MenuCombinationsSolver do
 				p menu_solver_2.combinations.length
 			end
 		end
+		context "for long_example.txt" do
+			let(:menu_3) {Menu.new(File.new("/Users/mattbehan/Documents/github_stuff/table_xi_menu_exercise/long_example.txt"))}
+			let(:menu_solver_3) {MenuCombinationsSolver.new(menu_3)}
+			it "finds a couple solutions" do
+				menu_solver_3.calculate_combinations_recursively([])
+				p "second solution"
+				p menu_solver_3.combinations
+				p menu_solver_3.combinations.length
+			end
+		end
 	end
 	describe "#brute_force" do
 	end

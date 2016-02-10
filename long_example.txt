@@ -1,0 +1,11 @@
+$12
+mixed fruit,$1.00
+french fries,$2.00
+side salad,$3
+shrimp cocktail,$3
+shrimp scampi,$1.00
+shrimp burger,$2.00
+shrimp sandwich,$3
+shrimp gumbo,$3
+pineapple shrimp,$8
+shrimp salad,$9
