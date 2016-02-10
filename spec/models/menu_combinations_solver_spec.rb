@@ -31,25 +31,29 @@ describe MenuCombinationsSolver do
 				p menu_solver_2.combinations.length
 			end
 		end
-		context "for long_example.txt" do
-			let(:menu_3) {Menu.new(File.new("/Users/mattbehan/Documents/github_stuff/table_xi_menu_exercise/long_example.txt"))}
-			let(:menu_solver_3) {MenuCombinationsSolver.new(menu_3)}
-			it "finds a couple solutions" do
-				menu_solver_3.calculate_combinations_recursively([])
-				p "second solution"
-				p menu_solver_3.combinations
-				p menu_solver_3.combinations.length
-			end
-		end
 	end
 	describe "#current_iterations_price" do
 	end
 	describe "#bottom_up" do
 		context "for example.txt" do
 			it "finds some solutions" do
-				p menu
 				results = menu_solver.bottom_up(menu.target_price, menu.menu_item_hash)
-				p results
+				results.each do |array|
+					p array[0]
+				end
+			end
+		end
+		context "for simple_example_1.txt" do
+			let(:menu_2) {Menu.new(File.new("/Users/mattbehan/Documents/github_stuff/table_xi_menu_exercise/simple_example_1.txt"))}
+			let(:menu_solver_2) {MenuCombinationsSolver.new(menu_2)}
+			it "finds reasonable solutions" do
+				results = menu_solver.bottom_up(menu_2.target_price, menu_2.menu_item_hash)
+				results.each do |array|
+					p array[0]
+				end
+				p results.count
+				p menu_solver_2.menu_hash
+				p menu_solver_2.menu_items
 			end
 		end
 	end

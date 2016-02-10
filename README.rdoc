@@ -53,6 +53,13 @@ The program will allow dollar signs and decimal places to be missing from amount
 -Any line has additional commas
 -There are duplicate menu items
 
+Improvements
+-Both methods for combination could be improved by substituting the menu options with integers to save memory, then later swapped back out for the correct menu option
+-Decided to use BigDecimal instead of float for storing price of menu options. To improve speed could switch to float, or even store them as integers and convert to a readable format at the end
+-Add feature tests
+-Add test for duplicate menu options
+
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

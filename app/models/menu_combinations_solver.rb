@@ -88,7 +88,7 @@ class MenuCombinationsSolver
 	# hash_of_possibilites.select {|key,value| value == target_amount}
 
 
-	def bottom_up target_price, menu_hash
+	def bottom_up_with_hash_error target_price, menu_hash
 		# start by sorting the menu hash and initialzing an empty hash that will be used to store combinations of dishes that are less than or equal to the target price
 		sorted_hash = menu_hash.sort_by {|item, price| price}
 		hash_of_possibilities = {}
@@ -109,6 +109,40 @@ class MenuCombinationsSolver
 		end
 		hash_of_possibilities.select{|key,value| value == target_price}
 
+	end
+
+	# need to add some sort of test to see if we have gotten the answer for that before
+	def bottom_up target_price, menu_hash
+		# start by sorting the menu hash and initializing an empty hash that will be used to store combinations of dishes that are less than or equal to the target price
+		sorted_hash = menu_hash.sort_by {|item, price| price}
+		array_of_possibilities = []
+		# go through each one of the items in the menu in ascending order by value
+		sorted_hash.each do |current_item, current_items_price|
+				# The current item by itself is surely not been added as possibility yet, so we start by adding that
+				if current_items_price <= target_price
+					array_of_possibilities.push([[current_item], current_items_price])
+				end
+				# Since we are going through the list of items in ascending order, the only new combinations we can make are using the current_item in conjunction with previously used items. By dynamically adding values to the array_of_possibilities using new combinations, we ensure that we add every possible combination that is less than the target price
+				array_of_possibilities.each do |array|
+					key = array[0]
+					value = array[1]
+					# binding.pry
+					# p "value: #{value}, current_items_price: #{current_items_price}"
+					# p "array_of_possibilities"
+					# p array_of_possibilities
+					if value + current_items_price <= target_price
+						new_possibility = key + [current_item]
+						array_of_possibilities.push([new_possibility, (value + current_items_price)])
+					end
+				end
+			# hash_of_current_options[item] = price #moved to end so that the option we are currently on is excluded from ones we have already used
+		end
+		array_of_possibilities.select{|array| array[1] == target_price}
+
+	end
+
+	def bottom_up_two
+		# 
 	end
 
 
