@@ -15,6 +15,7 @@ class HomeController < ApplicationController
           CSV.foreach(params[:file].path) do |row|
           	@menu_items << Menu.parse_row(row)
           end
+          @menu = Menu.new(params[:file])
           @target_price = @menu_items.shift
           @combinations = nil
           render :"/home/_menu_viewer", layout: false, locals: { menu_items: @menu_items, combinations: @combinations }
