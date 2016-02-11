@@ -15,6 +15,7 @@ class HomeController < ApplicationController
           unless @menu.errors.messages.empty?
             "______________here______________"
             # content_type :json
+            puts @menu.errors.messages
             raise ArgumentError
           else
           render :"/home/_menu_viewer", layout: false, locals: { menu_items: @menu_items, combinations: @combinations }
