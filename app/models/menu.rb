@@ -68,7 +68,7 @@ class Menu
 			self.errors.add(:target_price, "Invalid information for target price")
 			return nil
 		else
-			target_price = format_monetary_input_as_big_decimal(first_line[0])
+			target_price = format_monetary_input_as_integer(first_line[0])
 			if target_price <= 0
 				self.errors.add(:target_price, "Invalid information for target price")
 				return nil
@@ -84,7 +84,7 @@ class Menu
 	end
 
 	def format_monetary_input_as_big_decimal data
-		BigDecimal.new(data.gsub(/(\$)(\w+)/, '\2'))
+		data.gsub(/(\$)(\w+)/, '\2').to_f
 	end
 
 end
