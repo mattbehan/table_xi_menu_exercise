@@ -10,8 +10,8 @@ describe Menu do
 				@menu = Menu.new(test_file)
 			end
 			it "initializes a menu from the example.txt file" do
-				expect(@menu.target_price).to eq(BigDecimal.new("15.05"))
-				expect(@menu.menu_data[0]).to eq(["mixed fruit", BigDecimal.new("2.15")])
+				expect(@menu.target_price).to eq(1505)
+				expect(@menu.menu_data[0]).to eq(["mixed fruit", 215])
 			end
 			it "does not contain errors" do
 				expect(@menu.errors.messages).to eq({})
@@ -61,16 +61,6 @@ describe Menu do
 		end
 		context "a body row is passed" do
 		end
-	end
-
-	describe "#calculate_combinations" do
-	end
-	
-	describe "#calculate_combinations_remaining" do
-	end
-	describe "#brute_force" do
-	end
-	describe "#current_iterations_price" do
 	end
 
 end

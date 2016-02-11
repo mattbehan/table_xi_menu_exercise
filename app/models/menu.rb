@@ -4,7 +4,7 @@ class Menu
 
 	# The main responsiblity of this class is to parse and validify the data from the input file. Most of the validations are run during the processing of the file in order to save having to run over the data again
 
-	attr_reader :target_price, :menu_data, :menu_item_hash
+	attr_reader :target_price, :menu_data, :menu_item_hash, :parse_row
 
 	validates :menu_data, presence: true
 	validates :target_price, presence: true
@@ -16,6 +16,7 @@ class Menu
 			@menu_data = parsed_data[0]
 			@target_price = parsed_data[1]
 			@menu_item_hash = Hash[*@menu_data.flatten] #assumes only a 2 level deep array
+			check_for_duplicates
 		end
 	end
 
@@ -54,7 +55,7 @@ class Menu
 	# ensure first part is not blank
 	# called within parse_row in the case that it is not the first line
 	def valid_row_data? row
-		if row[0] == "" || row[0] == nil || row[1] == "" || row[1] == nil || format_monetary_input_as_big_decimal(row[1]) <= 0
+		if row[0] == "" || row[0] == nil || row[1] == "" || row[1] == nil || format_monetary_input_as_int(row[1]) <= 0
 			self.errors.add(:menu_data, "Invalid data within row")
 		else
 			true
@@ -68,7 +69,7 @@ class Menu
 			self.errors.add(:target_price, "Invalid information for target price")
 			return nil
 		else
-			target_price = format_monetary_input_as_big_decimal(first_line[0])
+			target_price = format_monetary_input_as_int(first_line[0])
 			if target_price <= 0
 				self.errors.add(:target_price, "Invalid information for target price")
 				return nil
@@ -78,13 +79,25 @@ class Menu
 		end
 	end
 
+	def check_for_duplicates
+		if menu_item_hash.keys.uniq! != nil
+			self.errors.add(:menu_data, "Cannot have duplicate menu items")
+			# raise "you can't have duplicates"
+		end
+	end
+
 	def parse_row row
-		row[1] = format_monetary_input_as_big_decimal(row[1])
+		row[1] = format_monetary_input_as_int(row[1])
 		row
 	end
 
-	def format_monetary_input_as_big_decimal data
-		BigDecimal.new(data.gsub(/(\$)(\w+)/, '\2'))
+	def format_monetary_input_as_int data
+		data = data.gsub(/(\$)(\w+)/, '\2').to_f
+		if data.to_i == data
+			data.to_i
+		else
+			(data*100).to_i
+		end
 	end
 
 end
