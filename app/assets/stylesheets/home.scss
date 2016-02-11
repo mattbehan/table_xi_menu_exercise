@@ -1,3 +1,66 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.background-image-div{
+	position: fixed;
+	background: image-url("files.jpg") no-repeat center fixed;
+	height: 100% !important;
+	width: 100% !important;
+	margin-left: 0 ;
+	margin-right: 0;
+	left: 0 !important;
+	right: 0 !important;
+	top: 0 !important;	
+	 -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+}
+
+.background-for-results{
+	background: image-url("bubba.jpg") no-repeat center fixed;
+	position: fixed;
+	height: 100% !important;
+	width: 100% !important;
+	margin-left: 0 ;
+	margin-right: 0;
+	left: 0 !important;
+	right: 0 !important;
+	top: 0 !important;	
+	 -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+}
+
+.split-1 {
+	width: 500px;
+	height: 500px;
+	background-color: rgba(255,255,255,0.6);	padding: 10px;
+	margin-top: 20px;
+	border-radius: 5px;	
+}
+.combinations {
+	display: inline-block;
+	float:left;
+	margin-left:10%;
+	margin-right:5%;
+	width: 34%
+}
+.your-file{
+	display: inline-block;
+	clear: left;
+	margin-left:5%;
+	margin-right:10%;
+	width: 34%;
+}
+.results-container{
+	width: 100%;
+	background-color: black;
+	color: white;
+}
+.parallax-container {
+      height: 250px;
+    }
