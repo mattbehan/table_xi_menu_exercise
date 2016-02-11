@@ -1,14 +1,20 @@
-<h2> Possible combinations </h2>
-<% if combinations %>
-	<% combinations.each do |combo| %>
-		<p> <%= combo %> </p>
+<div class="container">
+	<h2> Possible combinations </h2>
+	<% if combinations %>
+		<% combinations.each do |solution| %>
+			<p>
+			<% solution.each do |item| %>
+				<%= item %>, 
+			<% end %>
+			</p>
+		<% end %>
+	<% else %>
+		<p> No possible combinations. </p>
 	<% end %>
-<% else %>
-	<p> No possible combinations. </p>
-<% end %>
-<h2> Your File </h2>
-<% if menu_items %>
-	<% menu_items.each do |item| %>
-		<p> <%= item[0] %> , <%= item[1] %> </p>
-	<% end %>
-<%end %>
+	<h2> Your File </h2>
+	<% if menu_items %>
+		<% menu_items.each do |item| %>
+			<p> <%= item[0] %>: <%= item[1] %> </p>
+		<% end %>
+	<%end %>
+</div>

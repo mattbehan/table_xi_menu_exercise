@@ -18,8 +18,10 @@ class HomeController < ApplicationController
             raise @menu.errors.full_messages.join(", ")
           else
             @menu_solver = MenuCombinationsSolver.new(@menu.menu_item_hash, @menu.target_price)
-            @menu_solver.bottom_up
-            render :"/home/_menu_viewer", layout: false, locals: { menu_items: @menu.menu_item_hash, combinations: @menu_solver.combinations }
+            @menu_solver.bottom_up #included other methods for easy access
+            # @menu_solver.calculate_combinations_recursively([])
+            # @menu_solver.bottom_up_using_ints
+            render :"/home/_menu_viewer", layout: false, locals: { menu_items: @menu.printed_menu, combinations: @menu_solver.combinations }
           end
         rescue Exception => e #if error occurs during upload
           @error = e

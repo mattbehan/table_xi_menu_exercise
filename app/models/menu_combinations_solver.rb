@@ -17,10 +17,12 @@ class MenuCombinationsSolver
 		menu.keys.map.with_index{|item,index| index}
 	end
 
+	# sort menu by price ascending to make it so that we start with the smallest combinations
 	def sorted_menu menu
 		Hash[menu.sort_by {|item, price| price}]
 	end
 
+	# convert menu data to ints in order to use less memory space
 	def menu_hash_as_integers menu
 		Hash[menu_items_ints.zip(menu_hash.values)]
 	end
@@ -112,24 +114,5 @@ class MenuCombinationsSolver
 			end
 		end
 	end
-
-	# def convert_number_to_integer number
-	# 	int = number.to_i
-	# 	float = number.to_f
-	# 	counter = 1
-	# 	until float == int
-	# 		float *= 10
-	# 		int = (number*(10**counter)).to_i
-	# 		counter +=1
-	# 	end
-	# 	int
-	# end
-
-	# def convert_prices_to_integers menu
-	# 	menu.values.map do |value|
-	# 		convert_number_to_integer(value)
-	# 	end
-	# end
-
 
 end

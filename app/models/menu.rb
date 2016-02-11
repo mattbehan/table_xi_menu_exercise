@@ -4,7 +4,7 @@ class Menu
 
 	# The main responsiblity of this class is to parse and validify the data from the input file. Most of the validations are run during the processing of the file in order to save having to run over the data again
 
-	attr_reader :target_price, :menu_data, :menu_item_hash, :parse_row
+	attr_reader :target_price, :menu_data, :menu_item_hash, :parse_row, :printed_menu
 
 	validates :menu_data, presence: true
 	validates :target_price, presence: true
@@ -21,6 +21,22 @@ class Menu
 			puts "in initialize"
 			raise self.errors.full_messages.join(", ")
 		end
+	end
+
+	def printed_menu
+		printable_menu_items = Hash[menu_item_hash.keys.zip(reformat_prices_to_print(menu_item_hash.values))]
+		reformatted_target_price = reformat_price_to_print(target_price)
+		{"Target price" => reformatted_target_price}.merge(printable_menu_items)
+	end
+
+	def reformat_prices_to_print prices
+		prices.map do |price|
+			reformat_price_to_print(price)
+		end
+	end
+
+	def reformat_price_to_print price
+		"$" + sprintf("%.2f", (price.to_f/100) )
 	end
 
 	# run through the file and read the data while ensuring consistency of the data
