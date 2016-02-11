@@ -2,6 +2,7 @@ function uploadCSV () {
   $("#upload").on("submit", function(event){
 
     event.preventDefault();
+    event.stopPropagation()
 
     var data = new FormData();
 
@@ -28,7 +29,9 @@ function uploadCSV () {
     });
 
     request.fail(function(response) {
-      alert(response)
+      // alert(JSON.stringify(response))
+      alert(response.responseText)
+      console.log(response)
     });
 
   });

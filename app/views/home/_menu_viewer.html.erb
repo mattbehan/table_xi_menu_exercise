@@ -1,14 +1,42 @@
-<h2> Possible combinations </h2>
-<% if combinations %>
-	<% combinations.each do |combo| %>
-		<p> <%= combo %> </p>
-	<% end %>
-<% else %>
-	<p> No possible combinations. </p>
-<% end %>
-<h2> Your File </h2>
-<% if menu_items %>
-	<% menu_items.each do |item| %>
-		<p> <%= item[0] %> , <%= item[1] %> </p>
-	<% end %>
-<%end %>
+
+<div class="parallax-container">
+  <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <div id="front">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="parallax"><%= image_tag("bubba")%></div>
+</div>
+<div class="background-for-results"> </div>
+	<div class="results-container">
+		<div class="combinations">
+			<h2> Possible combinations </h2>
+			<% if combinations %>
+				<% combinations.each do |solution| %>
+					<p>
+					<% solution.each do |item| %>
+						<%= item %>, 
+					<% end %>
+					</p>
+				<% end %>
+			<% else %>
+				<p> No possible combinations. </p>
+			<% end %>
+		</div>
+		<div class="your-file">
+			<h2> Your File </h2>
+			<% if menu_items %>
+				<% menu_items.each do |item| %>
+					<p> <%= item[0] %>: <%= item[1] %> </p>
+				<% end %>
+			<%end %>
+		</div>
+</div>
+
+<div class="parallax-container">
+      <div class="parallax"><%= image_tag("bubba") %> </div>
+    </div>
