@@ -17,6 +17,9 @@ class Menu
 			@target_price = parsed_data[1]
 			@menu_item_hash = Hash[*@menu_data.flatten] #assumes only a 2 level deep array
 			check_for_duplicates
+		else
+			puts "in initialize"
+			raise self.errors.full_messages.join(", ")
 		end
 	end
 
