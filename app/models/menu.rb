@@ -112,11 +112,7 @@ class Menu
 
 	def format_monetary_input_as_int data
 		data = data.gsub(/(\$)(\w+)/, '\2').to_f
-		if data.to_i == data
-			data.to_i
-		else
-			(data*100).to_i
-		end
+		data*100.to_i
 	end
 
 end
