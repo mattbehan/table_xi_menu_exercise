@@ -28,7 +28,7 @@ function uploadCSV () {
     });
 
     request.fail(function(response) {
-      alert("Please contact admin.")
+      alert(response)
     });
 
   });

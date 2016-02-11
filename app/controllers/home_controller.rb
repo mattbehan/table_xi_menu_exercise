@@ -11,16 +11,19 @@ class HomeController < ApplicationController
 
       if request.xhr?
         begin # response to ajax call
-          @menu_items = []
-          CSV.foreach(params[:file].path) do |row|
-          	@menu_items << Menu.parse_row(row)
-          end
           @menu = Menu.new(params[:file])
-          @target_price = @menu_items.shift
-          @combinations = nil
+          unless @menu.errors.messages.empty?
+            "______________here______________"
+            # content_type :json
+            raise ArgumentError
+          else
           render :"/home/_menu_viewer", layout: false, locals: { menu_items: @menu_items, combinations: @combinations }
+        end
         rescue Exception => e #if error occurs during upload
           @error = e
+          puts "________________________________________________________"
+          puts @error
+          status 422
           render inline: "The upload failed.\n\nError details: <%= @error %>"
         end # end of error handling
       else

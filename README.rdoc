@@ -60,6 +60,36 @@ Improvements
 -Add test for duplicate menu options
 
 
+After switching out BigDecimals for integers, there was a pretty large gain in speed. 
+I benchmarked the difference between using strings of the actual item names in the menu_hash vs. replacing them with integers and then converting back to item names to present the solutions. The results of different target prices for long_example.txt:
+
+At target price of $40:
+.F..Rehearsal -------------------------------------------------
+using strings   9.500000   0.500000  10.000000 ( 10.169749)
+using ints     11.240000   0.280000  11.520000 ( 11.733752)
+--------------------------------------- total: 21.520000sec
+
+                    user     system      total        real
+using strings  10.950000   0.250000  11.200000 ( 11.325119)
+using ints      9.620000   1.040000  10.660000 ( 10.666246)
+............
+At a target price of $30
+.F..Rehearsal -------------------------------------------------
+using strings   0.710000   0.060000   0.770000 (  0.772387)
+using ints      0.990000   0.020000   1.010000 (  1.014176)
+---------------------------------------- total: 1.780000sec
+
+                    user     system      total        real
+using strings   0.610000   0.010000   0.620000 (  0.632614)
+using ints      0.810000   0.010000   0.820000 (  0.821617)
+............
+
+So it doesn't look like we got much at all for lower costs, and possibly even lost time due to the extra work being done. 
+
+Additionally, by switching to only using integers for both key and values, it does not look like the call stack really went any deeper. 
+
+Hooraayyyyyyyyy
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
