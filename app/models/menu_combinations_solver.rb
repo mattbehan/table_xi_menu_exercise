@@ -43,7 +43,6 @@ class MenuCombinationsSolver
 				@solutions_that_dont_work[convert_iteration_to_key_string(current_iteration)] = "nope"
 				current_iteration.delete(item)
 				next
-
 			end
 			calculate_combinations_recursively(current_iteration)
 		end
@@ -84,6 +83,7 @@ class MenuCombinationsSolver
 		@combinations = array_of_possibilities.select{|array| array[1] == target_price}.collect{|array| array[0]}
 	end
 
+	# kept this as a separate method to make it easy to compare and show differences between keeping the items as an array of strings and an array of integers. In the end, it was pretty much determined that converting the items to integers and then converting back was actually less efficient than just keeping the items as strings
 	def bottom_up_using_ints
 		array_of_possibilities = []
 		menu_as_only_ints.each do |current_item, current_items_price|
