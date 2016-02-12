@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *=require home.scss
  */
 @import "materialize";
 $primary-color: color("blue", "lighten-2") !default;
