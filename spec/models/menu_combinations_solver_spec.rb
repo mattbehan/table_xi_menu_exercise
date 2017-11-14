@@ -42,9 +42,6 @@ describe MenuCombinationsSolver do
 			it "finds some solutions" do
 				results = menu_solver.bottom_up
 				expect(menu_solver.combinations).to eq([["mixed fruit", "mixed fruit", "mixed fruit", "mixed fruit", "mixed fruit", "mixed fruit", "mixed fruit"],["mixed fruit", "hot wings", "hot wings", "sampler plate"]])
-				results.each do |array|
-					p array[0]
-				end
 			end
 		end
 		context "for simple_example_1.txt" do

@@ -1,28 +1,5 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 Usage
 First and foremost, some idiosyncracies about this program:
 If you would like to skip the registration process, use the email "admin@gmail.com" and the password "password"
@@ -54,10 +31,10 @@ The program will allow dollar signs and decimal places to be missing from amount
 -There are duplicate menu items
 
 Improvements
--Both methods for combination could be improved by substituting the menu options with integers to save memory, then later swapped back out for the correct menu option
--Decided to use BigDecimal instead of float for storing price of menu options. To improve speed could switch to float, or even store them as integers and convert to a readable format at the end
--Add feature tests
--Add test for duplicate menu options
+-For larger menus and target prices, a recursive solution can quickly run out of memory. I ended up implementing both a recursive solution and a bottom up approach. The bottom up approach is the live version of the app, as it preserves memory better and can 
+-Performance for both methods werebe improved by substituting the menu options with integers to save memory, then later swapped back out for the correct menu option at the end
+-Added feature tests
+-Added test for duplicate menu options
 
 
 After switching out BigDecimals for integers, there was a pretty large gain in speed. 
