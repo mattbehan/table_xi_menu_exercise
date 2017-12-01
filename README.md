@@ -11,6 +11,7 @@ This app presents a solution for a client looking to upload a menu and receive b
 
 
 After the header line, data is expected in the format
+
     :name_of_dish, :price of dish
     e.g.
     $15.05
@@ -38,10 +39,11 @@ After switching out BigDecimals for integers, there was a pretty large gain in s
 I benchmarked the difference between using strings of the actual item names in the menu_hash vs. replacing them with integers and then converting back to item names to present the solutions. The results of different target prices for long_example.txt:
 
 At target price of $40:
-    .F..Rehearsal -------------------------------------------------
-    using strings   9.500000   0.500000  10.000000 ( 10.169749)
-    using ints     11.240000   0.280000  11.520000 ( 11.733752)
-    --------------------------------------- total: 21.520000sec
+
+	F..Rehearsal -------------------------------------------------
+	using strings   9.500000   0.500000  10.000000 ( 10.169749)
+	using ints     11.240000   0.280000  11.520000 ( 11.733752)
+	--------------------------------------- total: 21.520000sec
 
                         user     system      total        real
     using strings  10.950000   0.250000  11.200000 ( 11.325119)
