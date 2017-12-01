@@ -11,15 +11,15 @@ This app presents a solution for a client looking to upload a menu and receive b
 
 
 After the header line, data is expected in the format
-	:name_of_dish, :price of dish
-	e.g.
-	$15.05
-	mixed fruit,$2.15
-	french fries,$2.75
-	side salad,$3.35
-	hot wings,$3.55
-	mozzarella sticks,$4.20
-	sampler plate,$5.80
+    :name_of_dish, :price of dish
+    e.g.
+    $15.05
+    mixed fruit,$2.15
+    french fries,$2.75
+    side salad,$3.35
+    hot wings,$3.55
+    mozzarella sticks,$4.20
+    sampler plate,$5.80
 
 The program will allow dollar signs and decimal places to be missing from amounts and any type of character in the first portion of the row of the CSV, however the program will return an error if:
 *	The first line contains a comma
@@ -33,30 +33,30 @@ The program will allow dollar signs and decimal places to be missing from amount
 *	Added feature tests
 *	Added test for duplicate menu options
 
-
+### Benchmarking
 After switching out BigDecimals for integers, there was a pretty large gain in speed. 
 I benchmarked the difference between using strings of the actual item names in the menu_hash vs. replacing them with integers and then converting back to item names to present the solutions. The results of different target prices for long_example.txt:
 
 At target price of $40:
-	.F..Rehearsal -------------------------------------------------
-	using strings   9.500000   0.500000  10.000000 ( 10.169749)
-	using ints     11.240000   0.280000  11.520000 ( 11.733752)
-	--------------------------------------- total: 21.520000sec
+    .F..Rehearsal -------------------------------------------------
+    using strings   9.500000   0.500000  10.000000 ( 10.169749)
+    using ints     11.240000   0.280000  11.520000 ( 11.733752)
+    --------------------------------------- total: 21.520000sec
 
-	                    user     system      total        real
-	using strings  10.950000   0.250000  11.200000 ( 11.325119)
-	using ints      9.620000   1.040000  10.660000 ( 10.666246)
-	............
-	At a target price of $30
-	.F..Rehearsal -------------------------------------------------
-	using strings   0.710000   0.060000   0.770000 (  0.772387)
-	using ints      0.990000   0.020000   1.010000 (  1.014176)
-	---------------------------------------- total: 1.780000sec
+                        user     system      total        real
+    using strings  10.950000   0.250000  11.200000 ( 11.325119)
+    using ints      9.620000   1.040000  10.660000 ( 10.666246)
+    ............
+    At a target price of $30
+    .F..Rehearsal -------------------------------------------------
+    using strings   0.710000   0.060000   0.770000 (  0.772387)
+    using ints      0.990000   0.020000   1.010000 (  1.014176)
+    ---------------------------------------- total: 1.780000sec
 
-	                    user     system      total        real
-	using strings   0.610000   0.010000   0.620000 (  0.632614)
-	using ints      0.810000   0.010000   0.820000 (  0.821617)
-	............
+                        user     system      total        real
+    using strings   0.610000   0.010000   0.620000 (  0.632614)
+    using ints      0.810000   0.010000   0.820000 (  0.821617)
+    ............
 
 So it doesn't look like we got much at all for lower costs, and possibly even lost time due to the extra work being done. 
 
