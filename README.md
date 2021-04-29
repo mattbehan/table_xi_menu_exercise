@@ -2,7 +2,7 @@
 
 ### About this app
 * This app was built in Nov 2015, shortly after I graduated dev bootcamp. It was modeled after this xkcd comic: https://xkcd.com/287/
-* My solution features two approaches to solve this np-completeness, a memoized bottom up approach and a recursive approach
+* My solution features two approaches to solve this np-completeness problem, a memoized bottom up approach and a recursive approach
 
 ### Usage
 You can find the live version of this app at https://warm-taiga-41838.herokuapp.com/
