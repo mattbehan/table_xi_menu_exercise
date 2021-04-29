@@ -1,6 +1,11 @@
 ## README
 
+### About this app
+* This app was built in Nov 2015, shortly after I graduated dev bootcamp. It was modeled after this xkcd comic: https://xkcd.com/287/
+* My solution features two approaches to solve this np-completeness, a memoized bottom up approach and a recursive approach
+
 ### Usage
+You can find the live version of this app at https://warm-taiga-41838.herokuapp.com/
 First and foremost, some idiosyncracies about this program:
 If you would like to skip the registration process, use the email "admin@gmail.com" and the password "password"
 Additionally, currently in materialize the styling for buttons is kind of "overlaid" upon current buttons, so buttons can sometimes seem to not work. Make sure to click the text portion of the button, and they always work.
@@ -30,7 +35,7 @@ The program will allow dollar signs and decimal places to be missing from amount
 
 ### Improvements
 *	For larger menus and target prices, a recursive solution can quickly run out of memory. I ended up implementing both a recursive solution and a bottom up approach. The bottom up approach is the live version of the app, as it preserves memory better and can 
-*	Performance for both methods werebe improved by substituting the menu options with integers to save memory, then later swapped back out for the correct menu option at the end
+*	Performance for both methods were improved by substituting the menu options with integers to save memory, then later swapped back out for the correct menu option at the end
 *	Added feature tests
 *	Added test for duplicate menu options
 
@@ -59,7 +64,3 @@ At target price of $40:
     using strings   0.610000   0.010000   0.620000 (  0.632614)
     using ints      0.810000   0.010000   0.820000 (  0.821617)
     ............
-
-So it doesn't look like we got much at all for lower costs, and possibly even lost time due to the extra work being done. 
-
-Hooraayyyyyyyyy
